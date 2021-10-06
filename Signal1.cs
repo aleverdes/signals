@@ -39,9 +39,9 @@ namespace AffenSignals
             listeners.Clear();
 
             var listenersWithoutParameters = new HashSet<Action>(_listenersWithoutParameters);
-            foreach (var listener in listeners)
+            foreach (var listener in listenersWithoutParameters)
             {
-                listener?.Invoke(arg0);
+                listener?.Invoke();
             }
 
             listenersWithoutParameters.Clear();
