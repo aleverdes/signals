@@ -20,30 +20,12 @@ namespace AffenSignals
         public void Invoke()
         {
             var listeners = new HashSet<Action>(_listeners);
-            foreach (Action listener in listeners)
+            foreach (var listener in listeners)
             {
                 listener?.Invoke();
             }
 
             listeners.Clear();
-        }
-    }
-
-    public class WaitForSignal<T> : UnityEngine.CustomYieldInstruction where T : ISignal, new()
-    {
-        public override bool keepWaiting => _keepWaiting;
-        private bool _keepWaiting;
-
-        public WaitForSignal()
-        {
-            _keepWaiting = true;
-            Signals.Get<T>().AddListener(Listener);
-        }
-
-        private void Listener()
-        {
-            _keepWaiting = false;
-            Signals.Get<T>().RemoveListener(Listener);
         }
     }
 }
