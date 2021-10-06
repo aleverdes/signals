@@ -1,6 +1,6 @@
 # AffenSignals
 
-### Simple EventBus realization for Unity with Coroutine support.
+### Simple EventBus-pattern implementation for Unity with Coroutine support.
 
 ---
 
