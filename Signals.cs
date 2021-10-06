@@ -11,7 +11,7 @@ namespace AffenSignals
         {
             if (!RegisteredSignals.TryGetValue(typeof(T), out ISignal signal))
             {
-                signal = (ISignal) Activator.CreateInstance(typeof(T));
+                signal = new T();
                 RegisteredSignals.Add(typeof(T), signal);
             }
 
