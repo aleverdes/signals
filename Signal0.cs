@@ -29,7 +29,7 @@ namespace AffenSignals
         }
     }
 
-    public class WaitForSignal<T> : UnityEngine.CustomYieldInstruction where T : Signal, new()
+    public class WaitForSignal<T> : UnityEngine.CustomYieldInstruction where T : ISignal, new()
     {
         public override bool keepWaiting => _keepWaiting;
         private bool _keepWaiting;
