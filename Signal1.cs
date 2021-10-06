@@ -28,6 +28,12 @@ namespace AffenSignals
             _listeners.Remove(listener);
         }
 
+        public void RemoveAllListeners()
+        {
+            _listeners.Clear();
+            _listenersWithoutParameters.Clear();
+        }
+
         public void Invoke(T arg0)
         {
             var listeners = new HashSet<Action<T>>(_listeners);

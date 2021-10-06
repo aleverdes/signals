@@ -6,5 +6,6 @@ namespace AffenSignals
     {
         void AddListener(Action listener);
         void RemoveListener(Action listener);
+        void RemoveAllListeners();
     }
 }
