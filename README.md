@@ -70,3 +70,15 @@ private IEnumerator Start()
     Debug.Log("Next frame after WinSignal was invoked")
 }
 ```
+
+### Local signal container
+
+Instead of using a global message bus, you can declare a local one, for example, only for the player and its parts, or only for the UI.
+
+```c#
+private void Awake()
+{
+    SignalContainer localSignalContainer = new SignalContainer();
+    localSignalContainer.Get<TakeDamageSignal>().AddListener(OnTakeDamage);
+}
+```
