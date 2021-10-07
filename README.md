@@ -11,6 +11,8 @@ Events can have parameters (up to four parameters, but this can be fraught with 
 There is a YieldInstruction for coroutines.
 It is possible to subscribe a method without parameters to a parameterized signal.
 
+Inspired by *[yankooliveira](https://github.com/yankooliveira) / [Signals](https://github.com/yankooliveira/signals)*.
+
 ### Usage
 
 Define signal-classes:
