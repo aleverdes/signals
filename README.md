@@ -59,7 +59,7 @@ void PlayAnimation(PlayParticlesSignal signal)
 
 Signal raise:
 ```c#
-Signals<ChatMessageSignal>().Invoke(new()
+Signals<ChatMessageSignal>.Invoke(new()
 {
     Text = "test"
 });
