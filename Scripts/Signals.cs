@@ -3,13 +3,33 @@ using System.Collections.Generic;
 
 namespace AffenSignals
 {
-    public static class Signals
+    public static class Signals<T> where T : struct, ISignal
     {
-        private static readonly SignalContainer DefaultContainer = new SignalContainer();
-        
-        public static T Get<T>() where T : ISignal, new()
+        private static readonly SignalHub<T> DefaultHub = new();
+
+        public static void AddListener(Action listener)
         {
-            return DefaultContainer.Get<T>();
+            DefaultHub.AddListener(listener);
+        }
+        
+        public static void AddListener(Action<T> listener)
+        {
+            DefaultHub.AddListener(listener);
+        }
+
+        public static void RemoveListener(Action listener)
+        {
+            DefaultHub.RemoveListener(listener);
+        }
+
+        public static void RemoveListener(Action<T> listener)
+        {
+            DefaultHub.RemoveListener(listener);
+        }
+
+        public static void Invoke(T arg)
+        {
+            DefaultHub.Invoke(arg);
         }
     }
 }

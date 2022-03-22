@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace AffenSignals
 {
-    public class WaitForSignal<T> : CustomYieldInstruction where T : ISignal, new()
+    public class WaitForSignal<T> : CustomYieldInstruction where T : struct, ISignal
     {
         public override bool keepWaiting => _keepWaiting;
         private bool _keepWaiting;
@@ -10,13 +10,13 @@ namespace AffenSignals
         public WaitForSignal()
         {
             _keepWaiting = true;
-            Signals.Get<T>().AddListener(Listener);
+            Signals<T>.AddListener(Listener);
         }
 
         private void Listener()
         {
             _keepWaiting = false;
-            Signals.Get<T>().RemoveListener(Listener);
+            Signals<T>.RemoveListener(Listener);
         }
     }
 }
