@@ -1,6 +1,6 @@
 {
-  "name": "com.aleverdes.affen-signals",
-  "displayName": "AffenSignals",
+  "name": "com.aleverdes.signals",
+  "displayName": "Signals",
   "version": "1.0.0",
   "unity": "2018.4",
   "keywords": ["EventBus", "Signals", "Events", "Messaging"],
