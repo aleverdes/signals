@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace AffenSignals
+namespace AffenCode.Signals
 {
     public class WaitForSignal<T> : CustomYieldInstruction where T : struct, ISignal
     {

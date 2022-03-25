@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.CompilerServices;
 
-namespace AffenSignals
+namespace AffenCode.Signals
 {
     public static class Signals<T> where T : struct, ISignal
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace AffenSignals
+namespace AffenCode.Signals
 {
     public interface ISignal
     {

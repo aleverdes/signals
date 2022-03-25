@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
-namespace AffenSignals
+namespace AffenCode.Signals
 {
     public sealed class SignalHub<T> where T : struct, ISignal
     {
