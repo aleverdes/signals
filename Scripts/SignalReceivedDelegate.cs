@@ -1,4 +1,4 @@
-namespace TaigaGames.Signals
+namespace AleVerDes.Signals
 {
     public delegate void SignalReceivedDelegate<in TSignal>(TSignal signal);
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace TaigaGames.Signals
+namespace AleVerDes.Signals
 {
     public class SignalBus
     {

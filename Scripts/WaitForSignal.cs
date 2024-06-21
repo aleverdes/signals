@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TaigaGames.Signals
+namespace AleVerDes.Signals
 {
     public class WaitForSignal<TSignal> : CustomYieldInstruction where TSignal : struct
     {
