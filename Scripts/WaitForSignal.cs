@@ -1,22 +1,28 @@
 using UnityEngine;
 
-namespace AffenCode.Signals
+namespace TaigaGames.Signals
 {
-    public class WaitForSignal<T> : CustomYieldInstruction where T : struct, ISignal
+    public class WaitForSignal<TSignal> : CustomYieldInstruction where TSignal : struct
     {
         public override bool keepWaiting => _keepWaiting;
         private bool _keepWaiting;
 
-        public WaitForSignal()
+        private readonly SignalBus _signalBus;
+        private readonly SignalReceivedDelegate<TSignal> _callback;
+
+        public WaitForSignal(SignalBus signalBus, SignalReceivedDelegate<TSignal> callback = null)
         {
             _keepWaiting = true;
-            Signals<T>.AddListener(Listener);
+            _signalBus = signalBus;
+            _callback = callback;
+            _signalBus.Subscribe<TSignal>(Listener);
         }
 
-        private void Listener()
+        private void Listener(TSignal signal)
         {
             _keepWaiting = false;
-            Signals<T>.RemoveListener(Listener);
+            _signalBus.Unsubscribe<TSignal>(Listener);
+            _callback?.Invoke(signal);
         }
     }
 }

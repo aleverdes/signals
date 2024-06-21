@@ -1,7 +1,7 @@
 {
-  "name": "com.affencode.signals",
-  "author": "AffenCode",
-  "displayName": "AffenCode Signals",
+  "name": "com.aleverdes.signals",
+  "author": "AleVerDes",
+  "displayName": "AleVerDes.Signals",
   "description": "Simple EventBus-pattern implementation for Unity with Coroutine support.",
   "unity": "2018.4",
   "version": "1.0.0",
@@ -14,6 +14,6 @@
   "dependencies": {},
   "repository": {
     "type": "git",
-    "url": "https://github.com/aleverdes/unity-signals.git"
+    "url": "https://github.com/aleverdes/signals.git"
   }
 }

@@ -1,32 +1,29 @@
-# AffenSignals
+# AleVerDes.Signals
 
 ### Simple EventBus-pattern implementation for Unity with Coroutine support.
 
 ---
 
 A simple library for working with the message bus. 
+Supports a CustomYieldInstruction for coroutines.
 
-It uses strict struct-typing to declare event types. 
-There is a YieldInstruction for coroutines.
-It is possible to subscribe a method without parameters to a parameterized signal.
-
-*Inspired by [yankooliveira](https://github.com/yankooliveira) / [Signals](https://github.com/yankooliveira/signals).*
+*Inspired by [yankooliveira](https://github.com/yankooliveira)/[Signals](https://github.com/yankooliveira/signals).*
 
 ### Usage
 
-Define signal-classes:
+Define signals:
 ```c#
-public struct PlayParticlesSignal : ISignal
+public struct PlayParticlesSignal
 {
     public string Name;
     public int Count;
 }
 
-public struct DebugSignal : ISignal
+public struct DebugSignal
 {
 }
 
-public struct ChatMessageSignal : ISignal
+public struct ChatMessageSignal
 {
     public string Text;
 }
@@ -34,24 +31,22 @@ public struct ChatMessageSignal : ISignal
 
 Signal subscription:
 ```c#
+[Inject] private readonly SignalBus _signalBus;
+[Inject] private readonly KeySignalBus<string> _idSignalBus;
+
 void Start()
 {
-    Signals<PlayParticlesSignal>.AddListener(OnWin);
-    Signals<PlayParticlesSignal>.AddListener(PlayParticlesSignal);
+    _signalBus.Subscribe<PlayParticlesSignal>(OnPlayParticlesSignal);
+    _idSignalBus.Subscribe<PlayParticlesSignal>("invokedOnlyForThisId", OnPlayParticlesSignal);
 }
 
 void OnDestroy()
 {
-    Signals<PlayParticlesSignal>.RemoveListener(OnWin);
-    Signals<PlayParticlesSignal>.RemoveListener(PlayParticlesSignal);
+    _signalBus.Unsubscribe<PlayParticlesSignal>(OnPlayParticlesSignal);
+    _idSignalBus.Unsubscribe<PlayParticlesSignal>("invokedOnlyForThisId", OnPlayParticlesSignal);
 }
 
-void OnWin()
-{
-    Debug.Log("win!!!");
-}
-
-void PlayAnimation(PlayParticlesSignal signal)
+void OnPlayParticlesSignal(PlayParticlesSignal signal)
 {
     // play animation
 }
@@ -59,7 +54,12 @@ void PlayAnimation(PlayParticlesSignal signal)
 
 Signal raise:
 ```c#
-Signals<ChatMessageSignal>.Invoke(new()
+_signalBus.Invoke(new()
+{
+    Text = "test"
+});
+
+_idSignalBus.Invoke("invokedOnlyForThisId", new()
 {
     Text = "test"
 });
@@ -73,6 +73,7 @@ private IEnumerator Start()
     Debug.Log("Start-coroutine started");
     
     yield return new WaitForSignal<WinSignal>();
+    yield return new WaitForKeySignal<WinSignal>("invokedOnlyForThisId");
     
     Debug.Log("Next frame after WinSignal was invoked")
 }
