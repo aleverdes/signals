@@ -1,19 +1,40 @@
 {
   "name": "com.aleverdes.signals",
-  "author": "AleVerDes",
+  "author": {
+    "name": "AleVerDes",
+    "email": "aleverdes@example.com",
+    "url": "https://github.com/aleverdes"
+  },
   "displayName": "AleVerDes.Signals",
-  "description": "Simple EventBus-pattern implementation for Unity with Coroutine support.",
-  "unity": "2018.4",
-  "version": "1.0.0",
+  "description": "A high-performance, feature-rich signal/messaging system for Unity with coroutine support, async operations, and advanced features like prioritized handlers and keyed scoping.",
+  "unity": "2019.4",
+  "unityRelease": "0f1",
+  "version": "2.0.0",
   "keywords": [
-    "EventBus", 
-    "Signals", 
-    "Events", 
-    "Messaging"
+    "EventBus",
+    "Signals",
+    "Events",
+    "Messaging",
+    "Observer",
+    "PubSub",
+    "Coroutines",
+    "Async",
+    "Priority",
+    "Unity"
   ],
+  "category": "Unity",
+  "type": "library",
   "dependencies": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/aleverdes/signals.git"
-  }
+  },
+  "license": "MIT",
+  "samples": [
+    {
+      "displayName": "Basic Usage Examples",
+      "description": "Basic signal bus usage, coroutine waiting, and keyed signals examples",
+      "path": "Samples~/BasicExamples"
+    }
+  ]
 }
